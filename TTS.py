@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import glob
 import time
 import PyPDF2
 from gtts import gTTS
