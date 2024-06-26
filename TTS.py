@@ -30,11 +30,11 @@ def read_text_from_pdf(file):
         text += page.extract_text()
     return text
 
-text = st.text_input("Enter text")
-language = st.selectbox("Select your language", ("English", "Indonesian"))
+text = st.text_input("Masukkan Kalimat : ")
+language = st.selectbox("Pilih Bahasa : ", ("English", "Indonesian"))
 lang_code = "en" if language == "English" else "id"
 
-uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
+uploaded_file = st.file_uploader("Pilih PDF File : ", type="pdf")
 
 def process_text(text):
     result = text_to_speech(lang_code, text)
@@ -48,12 +48,12 @@ def process_text(text):
             st.markdown(f"## Output text:")
             st.write(f"{text}")
 
-display_output_text = st.checkbox("Display output text")
+display_output_text = st.checkbox("Tampilkan Teks Dari PDF ")
 
 if st.button("Convert"):
     if uploaded_file is not None:
         text = read_text_from_pdf(uploaded_file)
-        time.sleep(1)  # Add a delay to avoid exceeding request limits
+        time.sleep(1)
     if text:
         process_text(text)
     else:
